@@ -1,0 +1,75 @@
+﻿@page "/"
+@using BlazorProject.Shared
+@using Syncfusion.Blazor.Grids
+
+<SfGrid DataSource="@Participants">
+    <GridColumns>
+        <GridColumn Field=@nameof(Participant.ParticipantId) HeaderText="ID"></GridColumn>
+        <GridColumn Field=@nameof(Participant.FirstName) HeaderText="First Name"></GridColumn>
+        <GridColumn Field=@nameof(Participant.LastName) HeaderText=" Last Name"></GridColumn>
+        <GridColumn Field=@nameof(Participant.Email) HeaderText="Email"></GridColumn>
+        <GridColumn Field=@nameof(Participant.Course) HeaderText="Course"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public List<Participant> Participants { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Participants = LoadData();
+    }
+
+    private List<Participant> LoadData()
+    {
+        Participant p1 = new Participant
+        {
+            ParticipantId = 1,
+            FirstName = "John",
+            LastName = "Hastings",
+            Email = "john@pragimtech.com",
+            DateOfBrith = new DateTime(1980, 10, 5),
+            Gender = Gender.Male,
+            Course = new Course { CourseId = 1, CourseName = "IT" },
+            PhotoPath = "images/john.png"
+        };
+
+        Participant p2 = new Participant
+        {
+            ParticipantId = 2,
+            FirstName = "Sam",
+            LastName = "Galloway",
+            Email = "sam@pragimtech.com",
+            DateOfBrith = new DateTime(1981, 12, 22),
+            Gender = Gender.Male,
+            Course = new Course { CourseId = 2, CourseName = "HR" },
+            PhotoPath = "images/sam.jpg"
+        };
+
+        Participant p3 = new Participant
+        {
+            ParticipantId = 3,
+            FirstName = "Mary",
+            LastName = "Smith",
+            Email = "mary@pragimtech.com",
+            DateOfBrith = new DateTime(1979, 11, 11),
+            Gender = Gender.Female,
+            Course = new Course { CourseId = 1, CourseName = "IT" },
+            PhotoPath = "images/mary.png"
+        };
+
+        Participant p4 = new Participant
+        {
+            ParticipantId = 3,
+            FirstName = "Sara",
+            LastName = "Longway",
+            Email = "sara@pragimtech.com",
+            DateOfBrith = new DateTime(1982, 9, 23),
+            Gender = Gender.Female,
+            Course = new Course { CourseId = 3, CourseName = "Payroll" },
+            PhotoPath = "images/sara.png"
+        };
+
+        return new List<Participant> { p1, p2, p3, p4 };
+    }
+}
